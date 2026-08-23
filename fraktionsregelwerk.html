@@ -263,9 +263,42 @@
     main { padding: 32px 22px 80px; }
     .logo-watermark { display: none; }
   }
+  .home-btn {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    transition: border-color .15s ease, color .15s ease, box-shadow .15s ease;
+  }
+  .home-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-bright);
+    box-shadow: 0 4px 20px rgba(232,38,127,0.3);
+  }
+  .home-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+  @media (max-width: 860px) {
+    .home-btn { top: 10px; right: 10px; padding: 7px 11px; font-size: 0.72rem; }
+  }
 </style>
 </head>
 <body>
+<a href="index.html" class="home-btn" aria-label="Zur Startseite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+  Startseite
+</a>
+
 <aside>
   <div class="brand-row">
     <div class="logo-badge"></div>
@@ -301,7 +334,7 @@
 <main>
 <div class="logo-watermark"></div>
 <h1 id="ovelia-roleplay-das-fraktionsregelwerk">OVELIA ROLEPLAY — DAS FRAKTIONSREGELWERK</h1>
-<p><em>Midcore Roleplay auf GTA V | Version 1.6 – Entwurf | Stand: 21.08.2026</em> <em>Ergänzung zum Hauptregelwerk (Abschnitt 9) | Verfasst von der Projektleitung | Letzte Änderung durch: Marco (Projektleitung)</em></p>
+<p><em>Midcore Roleplay auf FiveM | Version 1.6 – Entwurf | Stand: 21.08.2026</em> <em>Ergänzung zum Hauptregelwerk (Abschnitt 9) | Verfasst von der Projektleitung | Letzte Änderung durch: Marco (Projektleitung)</em></p>
 <blockquote>
 <p>Fraktionen sind das Herz von Ovelia. Sie sind der Grund, warum aus einzelnen Charakteren eine Stadt mit Geschichte wird — Familien mit Ruf, Behörden mit Verantwortung, Unternehmen mit Konkurrenz. Dieses Dokument regelt, wie aus einer Idee eine Fraktion wird, wie sie wächst, wie sie sich mit anderen misst, und was passiert, wenn es nicht mehr funktioniert.</p>
 </blockquote>
