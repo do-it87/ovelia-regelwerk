@@ -291,6 +291,39 @@
   @media (max-width: 860px) {
     .home-btn { top: 10px; right: 10px; padding: 7px 11px; font-size: 0.72rem; }
   }
+
+  .search-box { margin-bottom: 18px; }
+  .search-box input {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-family: inherit;
+  }
+  .search-box input::placeholder { color: var(--text-dim); }
+  .search-box input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+  .search-results { margin-top: 10px; max-height: 65vh; overflow-y: auto; }
+  .search-results[hidden] { display: none; }
+  aside.searching .nav-link { display: none; }
+  .sr-info { font-size: 0.72rem; color: var(--text-dim); margin: 0 0 8px; }
+  .sr-item {
+    display: block;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .sr-item:hover, .sr-item:focus { border-color: var(--accent); outline: none; }
+  .sr-doc { display: block; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-bright); }
+  .sr-title { display: block; font-size: 0.82rem; font-weight: 600; margin-top: 1px; }
+  .sr-snip { display: block; font-size: 0.74rem; line-height: 1.4; color: var(--text-dim); margin-top: 3px; }
+  mark, mark.rw-hit { background: #ffe600; color: #000; border-radius: 2px; padding: 0 1px; }
 </style>
 </head>
 <body>
@@ -310,6 +343,10 @@
   <div class="doc-switcher">
     <a href="regelwerk.html" class="doc-tab">Hauptregelwerk</a>
     <a href="fraktionsregelwerk.html" class="doc-tab active">Fraktionsregelwerk</a>
+  </div>
+  <div class="search-box">
+    <input type="search" id="rw-search" placeholder="Regelwerke durchsuchen" autocomplete="off" spellcheck="false" aria-label="Haupt- und Fraktionsregelwerk durchsuchen">
+    <div id="rw-results" class="search-results" hidden></div>
   </div>
   <a href="#über-dieses-dokument" class="nav-link">1. Über dieses Dokument</a>
 <a href="#die-5-fraktions-grundsätze-in-kürze" class="nav-link">2. Grundsätze in Kürze</a>
@@ -332,7 +369,7 @@
 </aside>
 <main>
 <h1 id="ovelia-roleplay-das-fraktionsregelwerk">OVELIA ROLEPLAY — DAS FRAKTIONSREGELWERK</h1>
-<p><em>Midcore Roleplay auf GTA V | Version 2.6 – Entwurf | Stand: 21.10.2026</em> <em>Ergänzung zum Hauptregelwerk (Abschnitt 9) | Letzte Änderung: 21.10.2026</em></p>
+<p><em>Midcore Roleplay auf GTA V | Version 2.7 – Entwurf | Stand: 23.10.2026</em> <em>Ergänzung zum Hauptregelwerk (Abschnitt 9) | Letzte Änderung: 23.10.2026</em></p>
 <blockquote>
 <p>Fraktionen sind das Herz von Ovelia. Ohne sie wäre die Stadt nur ein Haufen einzelner Charaktere statt ein Ort mit echter Geschichte: Familien mit Ruf, Behörden mit Verantwortung, Unternehmen, die sich gegenseitig Konkurrenz machen. Dieses Dokument beschreibt, wie aus einer Idee eine Fraktion wird, wie sie wachsen darf, wie sie mit anderen aneinandergerät und was passiert, wenn es einfach nicht mehr läuft.</p>
 </blockquote>
@@ -516,7 +553,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>Behörde → Behörde</td>
+<td>Behörde → Behörde oder Unternehmen (und umgekehrt)</td>
 <td>0 Tage</td>
 </tr>
 <tr class="even">
@@ -560,6 +597,8 @@
 <p>Neu beanspruchte Reviere sind <strong>7 Tage</strong> vor Angriffen geschützt. Zeit genug, um sich dort im RP zu etablieren, bevor es angreifbar wird.</p>
 <h3 id="kein-dauer-camping">9.3 Kein Dauer-Camping</h3>
 <p>Ein Revier ist kein Freifahrtschein für ständige Präsenz. Realistisches Kommen und Gehen wird erwartet – wer einen Bereich dauerhaft blockiert, ohne dass ein RP-Grund erkennbar ist, betreibt Fail RP (Hauptregelwerk 7.4).</p>
+<h3 id="routenpunkte-pushen">9.4 Routenpunkte pushen</h3>
+<p>Einen Routenpunkt zu pushen heißt, Personen zu überfallen, zu berauben, zu entführen, festzusetzen oder festzunehmen, die dort arbeiten. Das PD und jede illegale Fraktion dürfen jeden Routenpunkt einmal pro Wende pushen (bei illegalen Fraktionen braucht es dafür einen nachvollziehbaren RP-Hintergrund). Zivilisten dürfen Routenpunkte nicht pushen.</p>
 <hr />
 <h2 id="konflikte-rivalitäten-kriegsführung">10. Konflikte, Rivalitäten &amp; Kriegsführung</h2>
 <p>Dieser Abschnitt vertieft Hauptregelwerk 9.3. Der Grundsatz von dort gilt unverändert: Konflikte sollen Geschichten erzeugen, nicht die unterlegene Seite aus dem Spiel drängen.</p>
@@ -698,5 +737,259 @@
 <p>Fraktionen machen aus Ovelia mehr als eine Ansammlung einzelner Charaktere. Sie sind der Grund, warum Konflikte, Loyalität und Ruf überhaupt etwas bedeuten. Dieses Regelwerk soll dabei nicht bremsen, sondern einen Rahmen geben, in dem Rivalität Spaß macht statt Frust zu erzeugen – für die Sieger genauso wie für die, die diesmal verloren haben.</p>
 <p>Wer eine Fraktion gründen will, bringt seine Idee ein. Wer eine leitet, trägt Verantwortung dafür, dass sie sich an dieses Regelwerk hält. Und wer Fragen hat, wendet sich an die Fraktionsverwaltung.</p>
 </main>
+<script>
+(function () {
+  'use strict';
+  var input = document.getElementById('rw-search');
+  var box = document.getElementById('rw-results');
+  var aside = document.querySelector('aside');
+  var main = document.querySelector('main');
+  if (!input || !box || !main) return;
+
+  var DOCS = [
+    { url: 'regelwerk.html', name: 'Hauptregelwerk' },
+    { url: 'fraktionsregelwerk.html', name: 'Fraktionsregelwerk' }
+  ];
+  var activeTab = document.querySelector('.doc-tab.active');
+  var currentUrl = activeTab ? activeTab.getAttribute('href') : DOCS[0].url;
+  var MAX_RESULTS = 40;
+  var index = null;
+  var loading = null;
+  var timer = null;
+
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function norm(s) { return s.replace(/\s+/g, ' ').trim(); }
+
+  function terms(q) {
+    return norm(q).toLowerCase().split(' ').filter(function (t) { return t.length >= 2; });
+  }
+  function termRegex(ts) {
+    if (!ts.length) return null;
+    var sorted = ts.slice().sort(function (a, b) { return b.length - a.length; });
+    return new RegExp('(' + sorted.map(escRe).join('|') + ')', 'gi');
+  }
+
+  function ownText(el) {
+    var c = el.cloneNode(true);
+    var nested = c.querySelectorAll('ul,ol');
+    for (var i = 0; i < nested.length; i++) nested[i].remove();
+    return norm(c.textContent);
+  }
+
+  function buildSections(root, doc) {
+    var sections = [];
+    var cur = null;
+    var kids = root.children;
+    for (var i = 0; i < kids.length; i++) {
+      var el = kids[i];
+      if (/^H[1-4]$/.test(el.tagName)) {
+        cur = { doc: doc, id: el.id, title: norm(el.textContent), text: '' };
+        sections.push(cur);
+        continue;
+      }
+      if (!cur) continue;
+      var parts = el.matches('p') ? [ownText(el)] : [];
+      if (!parts.length) {
+        var nodes = el.querySelectorAll('p,li,td,th');
+        for (var j = 0; j < nodes.length; j++) parts.push(ownText(nodes[j]));
+      }
+      cur.text += ' ' + parts.join(' ');
+    }
+    return sections.filter(function (s) { return s.id; });
+  }
+
+  function loadIndex() {
+    if (index) return Promise.resolve(index);
+    if (loading) return loading;
+    loading = Promise.all(DOCS.map(function (d) {
+      if (d.url === currentUrl) {
+        return Promise.resolve(buildSections(main, d));
+      }
+      return fetch(d.url, { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (html) {
+          var parsed = new DOMParser().parseFromString(html, 'text/html');
+          var m = parsed.querySelector('main');
+          return m ? buildSections(m, d) : [];
+        })
+        .catch(function () { return []; });
+    })).then(function (lists) {
+      index = [].concat.apply([], lists);
+      return index;
+    });
+    return loading;
+  }
+
+  function clearMarks() {
+    var marks = main.querySelectorAll('mark.rw-hit');
+    for (var i = 0; i < marks.length; i++) {
+      var m = marks[i];
+      var p = m.parentNode;
+      p.replaceChild(document.createTextNode(m.textContent), m);
+      p.normalize();
+    }
+  }
+
+  function highlightPage(ts) {
+    clearMarks();
+    var re = termRegex(ts);
+    if (!re) return;
+    var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentNode;
+        if (p.closest && p.closest('script,style,mark.rw-hit')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var text = node.nodeValue;
+      re.lastIndex = 0;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      var frag = document.createDocumentFragment();
+      var last = 0, m;
+      while ((m = re.exec(text))) {
+        if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+        var mk = document.createElement('mark');
+        mk.className = 'rw-hit';
+        mk.textContent = m[0];
+        frag.appendChild(mk);
+        last = m.index + m[0].length;
+        if (m[0].length === 0) re.lastIndex++;
+      }
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function snippet(text, ts, re) {
+    var low = text.toLowerCase();
+    var pos = -1;
+    for (var i = 0; i < ts.length; i++) {
+      var p = low.indexOf(ts[i]);
+      if (p !== -1 && (pos === -1 || p < pos)) pos = p;
+    }
+    if (pos === -1) pos = 0;
+    var start = Math.max(0, pos - 50);
+    var end = Math.min(text.length, pos + 110);
+    var s = text.slice(start, end).trim();
+    var html = esc(s).replace(new RegExp(re.source, 'gi'), '<mark>$1</mark>');
+    return (start > 0 ? '… ' : '') + html + (end < text.length ? ' …' : '');
+  }
+
+  function search(ts) {
+    var re = termRegex(ts);
+    var hits = [];
+    index.forEach(function (s) {
+      var hay = (s.title + ' ' + s.text).toLowerCase();
+      var score = 0;
+      for (var i = 0; i < ts.length; i++) {
+        var c = hay.split(ts[i]).length - 1;
+        if (!c) return;
+        score += c;
+        if (s.title.toLowerCase().indexOf(ts[i]) !== -1) score += 6;
+      }
+      hits.push({ s: s, score: score });
+    });
+    hits.sort(function (a, b) { return b.score - a.score; });
+    return { hits: hits, re: re };
+  }
+
+  function render(q) {
+    var ts = terms(q);
+    if (!ts.length) {
+      box.hidden = true;
+      box.innerHTML = '';
+      aside.classList.remove('searching');
+      highlightPage([]);
+      return;
+    }
+    aside.classList.add('searching');
+    highlightPage(ts);
+    box.hidden = false;
+    if (!index) { box.innerHTML = '<p class="sr-info">Suche wird vorbereitet …</p>'; return; }
+    var r = search(ts);
+    if (!r.hits.length) {
+      box.innerHTML = '<p class="sr-info">Keine Treffer.</p>';
+      return;
+    }
+    var shown = r.hits.slice(0, MAX_RESULTS);
+    var qs = encodeURIComponent(norm(q));
+    var html = '<p class="sr-info">' + r.hits.length + (r.hits.length === 1 ? ' Abschnitt' : ' Abschnitte') +
+      (r.hits.length > MAX_RESULTS ? ' (die ersten ' + MAX_RESULTS + ' werden angezeigt)' : '') + '</p>';
+    shown.forEach(function (h) {
+      var s = h.s;
+      var href = s.doc.url + '?suche=' + qs + '#' + encodeURIComponent(s.id);
+      html += '<a class="sr-item" href="' + href + '" data-doc="' + s.doc.url + '" data-id="' + esc(s.id) + '">' +
+        '<span class="sr-doc">' + esc(s.doc.name) + '</span>' +
+        '<span class="sr-title">' + esc(s.title) + '</span>' +
+        '<span class="sr-snip">' + snippet(s.text || s.title, ts, r.re) + '</span></a>';
+    });
+    box.innerHTML = html;
+  }
+
+  function scrollToSection(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ block: 'start' });
+    var node = el.nextElementSibling;
+    while (node && !/^H[1-4]$/.test(node.tagName)) {
+      var mk = node.querySelector && node.querySelector('mark.rw-hit');
+      if (mk) { mk.scrollIntoView({ block: 'center' }); return; }
+      node = node.nextElementSibling;
+    }
+  }
+
+  box.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a.sr-item') : null;
+    if (!a) return;
+    if (a.getAttribute('data-doc') === currentUrl) {
+      e.preventDefault();
+      var id = a.getAttribute('data-id');
+      if (history.replaceState) history.replaceState(null, '', '#' + encodeURIComponent(id));
+      scrollToSection(id);
+    }
+  });
+
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { render(input.value); }, 150);
+  });
+  input.addEventListener('focus', function () {
+    loadIndex().then(function () { if (terms(input.value).length) render(input.value); });
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      input.value = '';
+      render('');
+    } else if (e.key === 'Enter') {
+      var first = box.querySelector('a.sr-item');
+      if (first) { e.preventDefault(); first.click(); }
+    }
+  });
+
+  var m = /[?&]suche=([^&#]*)/.exec(location.search);
+  if (m) {
+    var q = '';
+    try { q = decodeURIComponent(m[1].replace(/\+/g, ' ')); } catch (err) { q = ''; }
+    if (q) {
+      input.value = q;
+      loadIndex().then(function () {
+        render(q);
+        var id = decodeURIComponent(location.hash.replace(/^#/, ''));
+        if (id) scrollToSection(id);
+      });
+    }
+  }
+})();
+</script>
 </body>
 </html>
