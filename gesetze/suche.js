@@ -47,7 +47,7 @@
       var h = law.querySelector('h1'), lawName = h ? txt(h) : '';
       [].forEach.call(law.querySelectorAll('article.par'), function (a) {
         var h3 = a.querySelector('h3'), body = [];
-        [].forEach.call(a.querySelectorAll('p'), function (p) { body.push(txt(p)); });
+        [].forEach.call(a.querySelectorAll('p, li'), function (p) { body.push(txt(p)); });
         out.push({ id: a.id, law: lawName, title: h3 ? txt(h3) : '', text: body.join(' ') });
       });
       [].forEach.call(law.querySelectorAll('tr[id]'), function (tr) {
